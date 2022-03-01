@@ -1,5 +1,17 @@
 @import './themeVariable.scss'; //导入主题颜色变量
 
+// begin debug body
+$debug: '';
+@function debug($d: '') {
+  $debug: $debug + '>> #{inspect($d)} \A' !global;
+  @return $debug;
+}
+@mixin debug($d) {
+  $debug: debug($d);
+}
+
+// end
+
 @mixin themeMixin {
     @each $theme-name, $theme-map in $themes {
         //!global 把局部变量强升为全局变量
@@ -14,29 +26,22 @@
 
 //声明一个根据Key获取颜色的function
 @function themed($key) {
+    // @error "$key = #{map-get($theme-map, $key)}";
     @return map-get($theme-map, $key);
 }
 
-@mixin get-class-from-key($key) {
+@mixin get-class-from-key($key, $colorName: $key) {
+    // @error "$key = #{$key}, $colorName = #{themed($colorName)}";
     @include themeMixin {
-        $key: themed($key)!important;
+        #{$key}: themed($colorName);
     }
 }
 
-@mixin background_color($key) {
-    @include themeMixin {
-        background-color: themed($key)!important;
-    }
-}
 
-@mixin font_color($key) {  
-    @include themeMixin {
-        color: themed($key)!important;
-    }
-}
-
-@mixin border_color($key) {
-    @include themeMixin {
-        border-color: themed($key)!important;
-    }
-}
+body:before {
+    color: #C93900;
+    font-family: 'Andale Mono',monospace;
+    content: '#{$debug}';
+    display: block;
+    white-space: pre;
+  }

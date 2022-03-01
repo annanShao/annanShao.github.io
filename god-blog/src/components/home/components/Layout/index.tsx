@@ -1,25 +1,26 @@
 /*
  * @Author: your name
  * @Date: 2022-02-22 22:28:23
- * @LastEditTime: 2022-02-28 21:07:51
- * @LastEditors: your name
+ * @LastEditTime: 2022-03-01 22:42:07
+ * @LastEditors: Please set LastEditors
  * @Description: 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  * @FilePath: \MyBlog\annanShao.github.io\god-blog\src\components\home\components\Layout\index.tsx
  */
 import React, { useState } from "react";
 import {
   AreaChartOutlined,
-  IdcardFilled,
+  RobotFilled,
   CodeFilled,
   SlidersFilled,
 } from "@ant-design/icons";
 import "./index.scss";
+import ThemeButton from "../ThemeButton";
 
 function Layout() {
   const options = [
     {
       name: "站长简介",
-      icon: <IdcardFilled style={{ fontSize: "20px" }} />,
+      icon: <RobotFilled style={{ fontSize: "20px" }} />,
       key: "introduce",
     },
     {
@@ -56,6 +57,10 @@ function Layout() {
       <div className="layout-wrapper__left-slider-wrapper">
         <div className="layout-wrapper__left-slider-wrapper-logo">BLOG</div>
         <SliderOptions></SliderOptions>
+      </div>
+
+      <div className="layout-wrapper__theme-button-pos">
+        <ThemeButton></ThemeButton>
       </div>
     </div>
   );
