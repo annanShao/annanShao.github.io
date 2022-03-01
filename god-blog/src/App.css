@@ -1,5 +1,12 @@
+@import '~antd/dist/antd.css';
+
 .App {
   text-align: center;
+}
+
+body {
+  min-width: 1240px;
+  overflow: auto;
 }
 
 .App-logo {

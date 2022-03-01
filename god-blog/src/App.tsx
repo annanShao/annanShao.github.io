@@ -1,34 +1,36 @@
-/*
- * @Author: your name
- * @Date: 2022-02-18 12:54:40
- * @LastEditTime: 2022-02-18 15:05:22
- * @LastEditors: Please set LastEditors
- * @Description: 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
- * @FilePath: \MyBlog\annanShao.github.io\god-blog\src\App.tsx
- */
-import React from "react";
-import logo from "./logo.svg";
-import "./App.css";
-
-function App() {
+import React, { Suspense } from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import './App.css'
+import { HomePage } from "./components";
+import { Routers } from "./routers";
+console.log(Routers)
+const app = () => {
+  let defaultTheme = localStorage.getItem('data-theme')
+  if (!defaultTheme) {
+    localStorage.setItem('data-theme', 'light')
+    window.document.documentElement.setAttribute("data-theme", 'light');
+  } else {
+     window.document.documentElement.setAttribute("data-theme", defaultTheme);
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.2
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      {/* 使用了路由懒加载，所以需要使用<Suspense>包起来 */}
+      <Suspense fallback={<div></div>}>
+        <Routes>
+          {
+            Routers.map(router => (
+              <Route
+                path={router.path}
+                key={router.key}
+                element={router.element}
+              ></Route>
+            ))
+          }
+          <Route path="/" element={<HomePage/>}></Route>
+        </Routes>
+      </Suspense>
+    </BrowserRouter>
   );
-}
+};
 
-export default App;
+export default app;

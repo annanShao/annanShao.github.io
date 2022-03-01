@@ -1,0 +1,46 @@
+@import "../../../../style/themeMixin.scss";
+
+.layout-wrapper {
+  margin: 0;
+  @include background_color("background-color");
+
+  // @include get-class-from-key('background-color');
+  &__left-slider-wrapper {
+    height: 100vh;
+    background: #fff;
+    width: 15%;
+    padding: 16px;
+    text-align: center;
+    min-width: 220px;
+
+    &-logo {
+      color: #1081e8;
+      letter-spacing: 3px;
+      font-size: 30px;
+      font-weight: 700;
+      margin: 20px;
+    }
+
+    .left-slider {
+      &__options-wrapper {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        font-size: 16px;
+        font-weight: bold;
+        padding: 20px;
+        border-radius: 15px;
+        margin: 20px 0;
+        cursor: pointer;
+
+        & > div {
+          margin-left: 20px;
+        }
+
+        &:hover {
+          background-color: #1081e8;
+        }
+      }
+    }
+  }
+}
