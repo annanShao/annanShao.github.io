@@ -51,6 +51,9 @@ jobs:
         if: steps.pnpm-cache.outputs.cache-hit != 'true'
         run: |
           pnpm install
+          
+      - name: Build
+        run: pnpm run build
 
       # deploy
       - name: Deploy Page To Release
