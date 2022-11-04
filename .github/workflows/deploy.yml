@@ -7,6 +7,13 @@ on:
     - master
 jobs:
   job:
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+      
     name: deploy to staging
     runs-on: macos-latest
     steps:
