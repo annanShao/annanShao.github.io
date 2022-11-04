@@ -50,6 +50,7 @@ jobs:
 
       # deploy
       - name: Deploy Page To Release
-        run: pnpm run build
+        id: deployment
+        uses: actions/deploy-pages@v1
       
   
