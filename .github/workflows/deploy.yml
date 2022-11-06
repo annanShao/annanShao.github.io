@@ -11,7 +11,7 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
       
-    name: deploy to staging
+    name: Deployment
     runs-on: macos-latest
     steps:
       - name: Checkout
@@ -64,9 +64,5 @@ jobs:
       - name: Deploy Page To Release
         id: deployment
         uses: actions/deploy-pages@v1
-          
-      - name: Echo deploed url
-        run: |
-          echo ${{ steps.deployment.page_url }}
       
   
