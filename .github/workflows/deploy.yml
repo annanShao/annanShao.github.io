@@ -1,11 +1,17 @@
-name: Deployment CI
 on:
   push:
     branches:
     - master
 jobs:
-  setup:
-    name: Setup & Init
+  job:
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+      
+    name: deploy to staging
     runs-on: macos-latest
     steps:
       - name: Checkout
@@ -39,39 +45,28 @@ jobs:
           key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
           restore-keys: |
             ${{ runner.os }}-pnpm-store-
-  install:
-    needs: setup
-    name: Install & Build
-    runs-on: macos-latest
-    steps:
+      
       # cache fail and install dependencies
       - name: Install dependencies
-        if: needs.setup.steps.pnpm-cache.outputs.cache-hit != 'true'
+        if: steps.pnpm-cache.outputs.cache-hit != 'true'
         run: |
           pnpm install
           
       - name: Build
         run: pnpm run build
-  
-  deployment:
-    needs: [setup, install]
-    permissions:
-      pages: write
-      id-token: write
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    name: Deployment
-    runs-on: macos-latest
-    steps:
+        
       - name: upload production artifacts
         uses: actions/upload-pages-artifact@v1
         with:
-          path: dist # don‘t wrap
+          path: dist
 
       # deploy
       - name: Deploy Page To Release
         id: deployment
         uses: actions/deploy-pages@v1
+          
+      - name: Echo deploed url
+        run: |
+          echo ${{ steps.deployment.page_url }}
       
   
