@@ -3,13 +3,6 @@ on:
   push:
     branches:
     - master
-
-    ermissions:
-      pages: write
-      id-token: write
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
 jobs:
   setup:
     name: Setup & Init
@@ -62,6 +55,12 @@ jobs:
   
   deployment:
     needs: [setup, install]
+    ermissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     name: Deployment
     runs-on: macos-latest
     steps:
