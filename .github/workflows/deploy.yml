@@ -55,7 +55,7 @@ jobs:
   
   deployment:
     needs: [setup, install]
-    ermissions:
+    permissions:
       pages: write
       id-token: write
     environment:
