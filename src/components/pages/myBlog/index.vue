@@ -2,7 +2,7 @@
 </script>
 
 <template>
-  <div>
-    Blog
+  <div class="p-4">
+    Blog is coming soon...
   </div>
 </template>
