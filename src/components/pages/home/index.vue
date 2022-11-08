@@ -23,7 +23,7 @@ const menu = [
   <div class="w-full absolute h-full flex flex-col justify-center items-center">
     <a-avatar :size="128">
       <template #icon>
-        <img src="@/assets/avatar.png" alt="" />
+        <img src="@/assets/avatar.png" loading="lazy" alt="" />
       </template>
     </a-avatar>
     <div class="flex mt-4">
