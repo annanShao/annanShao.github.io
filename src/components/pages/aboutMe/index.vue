@@ -26,8 +26,8 @@
       浙大研二科研摆烂选手，科研方向是 TDA + DL，未来规划是开发工程师，主前端、可全栈、可AI <span class="line-through">（调参炼丹师）</span> 
     </p>
     <p>
-      两段字节前端开发实习经历，一段 <span class=" underline">Data To B</span>，一段 <span class=" underline">基架 To
-        D</span>>，从啥也不懂的切图仔逐渐进化中 🧬 向 WASM <span class="line-through">门外汉</span>、Rust <span
+      一次创业经历，两次字节前端开发实习经历， <span class=" underline">Data To B</span> &  <span class=" underline">基架 To
+        D</span>，从啥也不懂的切图仔逐渐进化中 🧬 —— 向 WASM <span class="line-through">门外汉</span>、Rust <span
         class="line-through">忠实爱好者</span>、node <span class="line-through">CRUD选手</span>、工程化 <span
         class="line-through">小试牛刀</span> 进化
     </p>
@@ -41,7 +41,7 @@
     </p>
 
     <p>
-      兴趣爱好：唱歌、健身、下棋（云顶之弈）、户外、打代码、数码产品发烧友、打代码 <span class="line-through">（假的）</span>
+      兴趣爱好：唱歌、健身、下棋（云顶之弈）、户外、数码产品发烧友、打代码 <span class="line-through">（假的）</span>
     </p>
   </div>
 </template>
