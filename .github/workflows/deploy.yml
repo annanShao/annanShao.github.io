@@ -55,13 +55,13 @@ jobs:
         run: pnpm run build
         
       - name: upload production artifacts
-        uses: actions/upload-pages-artifact@v1
+        uses: actions/upload-pages-artifact@v3
         with:
           path: dist
 
       # deploy
       - name: Deploy Page To Release
         id: deployment
-        uses: actions/deploy-pages@v1
+        uses: actions/deploy-pages@v4
       
   
