@@ -1,8 +1,15 @@
 import { createApp } from 'vue'
-import './main.css';
+import Antd from 'ant-design-vue'
+import 'ant-design-vue/dist/antd.css'
+import './main.css'
 import App from './App.vue'
-import Antd from 'ant-design-vue';
-import { router } from "./routers";
-import 'ant-design-vue/dist/antd.css';
+import { router } from './routers'
+import { vReveal } from './directives/reveal'
 
-createApp(App).use(Antd).use(router).mount('#app')
+const app = createApp(App)
+
+app.use(Antd)
+app.use(router)
+app.directive('reveal', vReveal)
+
+app.mount('#app')

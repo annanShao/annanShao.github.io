@@ -1,3 +1,116 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* ---------- Design tokens: cold, sharp, dark-first monochrome ---------- */
+/* Light (opt-in) */
+:root {
+  --bg: #fafbfc;
+  --surface: #ffffff;
+  --elevated: #ffffff;
+  --line: rgba(10, 12, 16, 0.1);
+  --line-strong: rgba(10, 12, 16, 0.2);
+  --ink: #0c0e12;
+  --muted: #5a616b;
+  --faint: #969ca6;
+  --accent: #2f63e6;
+  --accent-ink: #ffffff;
+  --accent-soft: rgba(47, 99, 230, 0.08);
+  --glow: rgba(47, 99, 230, 0.07);
+  --grid: rgba(10, 12, 16, 0.035);
+  --header-bg: rgba(250, 251, 252, 0.72);
+}
+
+/* Dark (default) */
+.dark {
+  --bg: #08090b;
+  --surface: #0f1113;
+  --elevated: #16181b;
+  --line: rgba(255, 255, 255, 0.09);
+  --line-strong: rgba(255, 255, 255, 0.18);
+  --ink: #eceef1;
+  --muted: #9ba1ab;
+  --faint: #5c626c;
+  --accent: #7ea6ff;
+  --accent-ink: #08090b;
+  --accent-soft: rgba(126, 166, 255, 0.1);
+  --glow: rgba(120, 160, 255, 0.12);
+  --grid: rgba(255, 255, 255, 0.025);
+  --header-bg: rgba(8, 9, 11, 0.68);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@layer base {
+  body {
+    @apply font-sans bg-bg text-ink antialiased;
+    letter-spacing: 0;
+    transition:
+      background-color 0.3s ease,
+      color 0.3s ease;
+  }
+
+  ::selection {
+    background: var(--accent);
+    color: var(--accent-ink);
+  }
+}
+
+/* ---------- Scroll-entry reveal ---------- */
+.reveal-init {
+  opacity: 0;
+  transform: translateY(14px);
+}
+
+.reveal-in {
+  opacity: 1;
+  transform: none;
+  transition:
+    opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal-init,
+  .reveal-in {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* ---------- Ambient: technical grid + cold light spot ---------- */
+.grid-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 64px 64px;
+  -webkit-mask-image: radial-gradient(
+    ellipse 85% 55% at 50% 0%,
+    #000 15%,
+    transparent 75%
+  );
+  mask-image: radial-gradient(
+    ellipse 85% 55% at 50% 0%,
+    #000 15%,
+    transparent 75%
+  );
+}
+
+.glow {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: radial-gradient(46% 38% at 50% -6%, var(--glow) 0%, transparent 72%);
+}

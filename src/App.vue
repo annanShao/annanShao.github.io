@@ -1,37 +1,15 @@
 <script setup lang="ts">
-// This starter template is using Vue 3 <script setup> SFCs
-
-import { onMounted } from 'vue';
-import { RouterView } from 'vue-router';
-import Header from '@/components/common/Header.vue';
-
-// Check out https://vuejs.org/api/sfc-script-setup.html#script-setup
-onMounted(() => {
-  if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-    document.documentElement.classList.add('dark');
-  }
-})
+import { RouterView } from 'vue-router'
+import Header from '@/components/common/Header.vue'
 </script>
 
 <template>
-  <Header></Header>
-  <router-view />
+  <div class="relative min-h-screen overflow-x-hidden bg-bg text-ink">
+    <div class="grid-bg" aria-hidden="true"></div>
+    <div class="glow" aria-hidden="true"></div>
+    <Header />
+    <main class="relative z-10">
+      <router-view />
+    </main>
+  </div>
 </template>
-
-<style>
-body {
-  padding: 0;
-  box-sizing: border-box;
-  font-weight: 100;
-  transition: 0.2s ease-in;
-  letter-spacing: 1px;
-}
-
-.dark body {
-  background-color: #232435;
-}
-
-.dark * {
-  color: white;
-}
-</style>
