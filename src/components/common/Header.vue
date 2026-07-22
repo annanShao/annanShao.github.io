@@ -23,7 +23,7 @@ const openGithub = () => window.open('https://github.com/annanShao', '_blank')
         </span>
       </router-link>
 
-      <nav class="flex items-center gap-3 sm:gap-6">
+      <nav class="flex min-w-0 shrink items-center gap-2.5 sm:gap-5">
         <router-link to="/about" class="nav-link">About</router-link>
         <router-link to="/blog" class="nav-link">Blog</router-link>
 
