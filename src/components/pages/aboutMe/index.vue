@@ -51,7 +51,6 @@ const links = [
         >
           TitanLog
         </h1>
-        <span class="status-badge">In App Store review</span>
       </div>
 
       <p class="mt-5 max-w-2xl text-lg leading-relaxed text-ink">
